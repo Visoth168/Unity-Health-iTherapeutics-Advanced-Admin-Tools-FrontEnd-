@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title>Border Example</title>
+      <link rel="stylesheet" href="https://stackpath.bootstrap.com/bootstrap/4.1.1/css/bootstrap.min.css">
+	  <style>
+         .container-fluid {
+			padding-top: 10px;
+			padding-right: 10px;
+			padding-left: 10px;
+			padding-bottom: 10px;
+         background: #bfbfbf;
+		 }
+		 .container-fluid1{
+			padding-top: 4px;
+			padding-right: 4px;
+			padding-left: 4px;
+			padding-bottom: 4px;
+         background: #bfbfbf;
+		 }
+		 .container-fluid2{
+			padding-top: 4px;
+			padding-right: 4px;
+			padding-left: 4px;
+			padding-bottom: 4px;
+         background: #eee;
+		 }
+		 .topnav .search-container {
+  float: right;}
+
+.btn {
+  border: 2px solid black;
+  background-color: white;
+  color: black;
+}
+.btn2 {
+  border: 0px solid black;
+  padding: 1x 1px;
+  color: white;
+  background:blue;
+  border-radius: 50%;
+}
+      </style>
+   </head>
+   <body>
+<div class="container-fluid"style="border: 1px solid black" >
+      <div class="container-fluid1"style="border: 1px solid black" >
+			 Menu
+			<p class="text-left">
+
+			<div class="btn-group shadow-0">
+  <button type="button" class="btn btn-light dropdown-toggle" data-mdb-toggle="dropdown" aria-expanded="true" disabled>
+    Suppliers
+  </button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="#">Action</a></li>
+    <li><a class="dropdown-item" href="#">Another action</a></li>
+    <li><a class="dropdown-item" href="#">Something else here</a></li>
+    <li><hr class="dropdown-divider" /></li>
+    <li><a class="dropdown-item" href="#">Separated link</a></li>
+  </ul>
+</div>
+<div class="btn-group shadow-0">
+  <button type="button" class="btn btn-light dropdown-toggle" data-mdb-toggle="dropdown" aria-expanded="false">
+    Company Staff Accounts
+  </button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="#">Action</a></li>
+    <li><a class="dropdown-item" href="#">Another action</a></li>
+    <li><a class="dropdown-item" href="#">Something else here</a></li>
+    <li><hr class="dropdown-divider" /></li>
+    <li><a class="dropdown-item" href="#">Separated link</a></li>
+  </ul>
+</div>
+<p class="text-right">Current User : Tabish Sarfraz | <a href="#" class="link-info">Main Menu</a></p>
+
+      </div>
+
+	  <div class="container-fluid1" >
+	  <div class="topnav">
+      <br><hr><br>
+      <a href="#" routerLink="/staff-create/" class="btn btn-success">New</a>
+  <div class="search-container" style="display: flex">
+    <form [formGroup]="form" (ngSubmit)="search()">
+      <input type="text" placeholder="Search.." formControlName="searchQuery">
+      <button type="submit">Go</button>
+    </form><a href="/"><button>Clear</button></a>
+  </div>
+</div>
+
+      </div>
+
+
+	  <div class="container-fluid2" style="border: 1px solid black">
+          Company Staff Accounts
+           <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Company</th>
+                <th>ACL</th>
+                <th>Account Type</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th width="250px">Action</th>
+              </tr>
+          </thead>
+  <tbody>
+    <tr *ngFor="let staff of staffs">
+      <td>{{ staff.company }}</td>
+      <td>{{ staff.acl }}</td>
+      <td>{{ staff.accountType }}</td>
+      <td>{{ staff.firstName }}</td>
+      <td>{{ staff.lastName }}</td>
+      <td>{{ staff.email }}</td>
+      <td>
+        <a href="#" [routerLink]="['/edit-staff/', staff.id, 'edit']" class="btn btn-primary">Edit</a>
+        <button type="button" (click)="deletePost(staff.id)" class="btn btn-danger">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+      </div>
+</div>
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+
+   </body>
+</html>

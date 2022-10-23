@@ -1,0 +1,26 @@
+.container{
+  background-color: rgb(191, 191, 191);
+  font-size: 13px;
+  padding: 10px;
+  width: 730px;
+
+
+}
+label {
+  font-weight: normal !important;
+}
+select{
+  width:147px;
+}
+fieldset{
+  padding: 10px;
+  min-width: 400px;
+}
+label { color: black; font-weight: bold; display: block; width: 150px; float: left; }
+
+.d2{
+  float:left;
+}
+.d1{
+  float:right;}
+

@@ -1,0 +1,42 @@
+.container{
+    background-color: rgb(191, 191, 191);
+    font-size: 14px;
+    padding: 10px;
+    
+  
+  
+  }
+  label {
+    font-weight: normal !important;
+  }
+  select{
+    width:147px;
+  }
+fieldset{
+    padding: 8px;
+    min-width: 200px;
+  border:1px solid;
+  }
+  label {
+    float: left;
+}
+
+  
+input {
+    height:10%;
+    width: 30%;
+    border: 1px solid;
+}
+  
+  .d2{
+    float:left;
+  }
+  .d1{
+    float:right;}
+    label {
+        display: inline-block;
+        width: 150px;
+        text-align: left;
+      }
+  
+  

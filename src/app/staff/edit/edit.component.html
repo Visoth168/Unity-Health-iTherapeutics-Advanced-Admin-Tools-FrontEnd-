@@ -1,0 +1,153 @@
+<style> img { max-width: 100%; } </style>
+<div class="container">
+
+
+  <fieldset style="width:800px;" >
+
+                    <legend>Menu</legend>
+                    <div class="d0">
+                      <div class="d2">
+                    <select id="categories" name="users" onchange="showUser(this.value)">
+                      <option value="">Suppliers</option>
+                      <option value="movie">Movie</option>
+                      <option value="musik">Musik</option>
+                      <option value="books">Books</option>
+                      <option value="images">Images</option>
+                      </select>
+              <select style="width:180px;" id="categories" name="users" onchange="showUser(this.value) ">
+                <option value="">Company Staff Account</option>
+                <option value="movie">Tblslideshow Rotator Module</option>
+                </select>
+              </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <div class="d1"></div>
+                <output>Current User: Tabish Sarfraz | </output> <a href="url">Main Menu</a>
+
+              </div>
+
+</fieldset>
+
+
+
+<fieldset style="width:800px;">
+    <form [formGroup]="form" (ngSubmit)="submit()"><br>
+                                <fieldset style="width:780px;">
+                                    <legend>Web Account</legend>
+                                <div class="p1">
+
+                                      <div class="form-group">
+                                        <label for="email">E-Mail:</label>      <input formControlName="email"
+                                        id="email"
+                                        type="text"
+                                        [(ngModel)]="staff.email"
+                                        class="form-control" required />
+                                    </div>
+                                  <br>
+                                        <label for="password">Password:</label>      <output>[Password Encrypted]</output><br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="url">Reset password</a><br>
+                                        <label for="accountID">Account ID:</label>      xxx<br>
+                                        <label for="lms">LMS User ID:</label>      xxxxxxx<br>
+                                        <label for="login">Login:</label>     <a href="url">Login as User</a><br>
+
+
+                                </div>
+                            </fieldset >
+
+                            <legend>Company Staff Acount</legend>
+
+                                <div class="p2">
+
+                                    <fieldset style="width:780px;">
+                                        <legend>Company Details</legend>
+                                        <div class="form-group">
+                                        <label for="suppliers">Assigned To Supplier:</label><input formControlName="suppliers"
+                                        id="suppliers"
+                                        type="text"
+                                        [(ngModel)]="staff.suppliers"
+                                        class="form-control" required>
+
+                                          </div>
+                                          <div class="form-group">
+                                          <label for="company">Works For Company</label><input formControlName="company"
+                                          id="company"
+                                          [(ngModel)]="staff.company"
+                                          type="text"
+
+                                          class="form-control" required>
+                                            </div>
+                                </fieldset>
+                                </div>
+                                <fieldset style="width:780px;">
+                                    <legend>Details</legend>
+                                <div class="p3">
+
+                                    <div class="f3">
+                                      <div class="form-group">
+                                        <label for="title">Title:                   </label><input formControlName="title"
+                                        id="title"
+                                        type="text"
+                                        [(ngModel)]="staff.title"
+                                        class="form-control" required>
+                                          </div>
+                                          <div class="form-group">
+                                        <label for="firstName">First Name:         </label><input formControlName="firstName"
+                                        id="firstName"
+                                        type="text"
+                                        [(ngModel)]="staff.firstName"
+                                        class="form-control" required><Br>
+                                          </div>
+                                          <div class="form-group">
+                                        <label for="lastName">Last Name:           </label><input formControlName="lastName"
+                                        id="lastName"
+                                        type="text"
+                                        [(ngModel)]="staff.lastName"
+                                        class="form-control" required><br>
+                                        </div>
+                                        <div class="form-group">
+                                        <label for="age">Age:                       </label><input formControlName="age"
+                                        id="age"
+                                        type="number"
+                                        [(ngModel)]="staff.age"
+                                        class="form-control" required>
+
+                                          </div>
+                                          <div class="form-group">
+                                        <label for="position">Position:             </label><input formControlName="position"
+                                        id="position"
+                                        type="text"
+                                        [(ngModel)]="staff.position"
+                                        class="form-control" required><br>
+                                        </div>
+                                        <div class="form-group">
+                                        <label for="country">Country:               </label><input formControlName="country"
+                                        id="country"
+                                        type="text"
+                                        [(ngModel)]="staff.country"
+                                        class="form-control" required>
+                                          </div>
+                                          <div class="form-group">
+                                        <label for="state">State/Region      </label><input formControlName="state"
+                                        id="state"
+                                        type="text"
+                                        [(ngModel)]="staff.state"
+                                        class="form-control" required><br>
+                                        </div>
+                                    </div>
+                                </div>
+                              </fieldset>
+                              <fieldset style="width:780px;">
+                                <legend>Admin Access</legend>
+                                <div class="form-group">
+                                <label for="acl">Access Level:</label><input formControlName="acl"
+                                id="acl"
+                                type="number"
+                                [(ngModel)]="staff.acl"
+                                class="form-control" required><br>
+                                  </div>
+                              </fieldset>
+                            <div class="x">
+                              <br><button class="btn btn-primary" type="submit"  >Update</button><a href="#" routerLink="/" class="btn btn-primary">Cancel</a></div>
+
+                            </form>
+  </fieldset>
+
+</div>

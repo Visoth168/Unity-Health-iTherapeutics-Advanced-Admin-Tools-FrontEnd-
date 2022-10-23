@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Tblslideshow</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrap.com/bootstrap/4.1.1/css/bootstrap.min.css">
+  <style>
+    .container-fluid {
+      padding-top: 10px;
+      padding-right: 10px;
+      padding-left: 10px;
+      padding-bottom: 10px;
+      background: #bfbfbf;
+    }
+    .container-fluid1{
+      padding-top: 4px;
+      padding-right: 4px;
+      padding-left: 4px;
+      padding-bottom: 4px;
+      background: #bfbfbf;
+    }
+    .container-fluid2{
+      padding-top: 4px;
+      padding-right: 4px;
+      padding-left: 4px;
+      padding-bottom: 4px;
+      background: #eee;
+    }
+    .topnav .search-container {
+      float: right;}
+
+    .btn {
+      border: 2px solid black;
+      background-color: white;
+      color: black;
+    }
+    .btn2 {
+      border: 0px solid black;
+      padding: 1x 1px;
+      color: white;
+      background:blue;
+      border-radius: 50%;
+    }
+  </style>
+</head>
+<body>
+<div class="container-fluid"style="border: 1px solid black" >
+  <div class="container-fluid1"style="border: 1px solid black" >
+    Menu
+    <p class="text-left">
+
+    <div class="btn-group shadow-0">
+      <button type="button" class="btn btn-light " data-mdb-toggle="dropdown" aria-expanded="true" disabled>
+        Site
+      </button>
+    </div>
+    <div class="btn-group shadow-0">
+      <button type="button" class="btn btn-light" data-mdb-toggle="dropdown" aria-expanded="false">
+        Tblslideshow Rotator Module
+      </button>
+    </div>
+
+  </div>
+
+  <div class="container-fluid1" >
+    <div class="topnav">
+      <br><hr><h4>Tblslideshow Rotator Maintenance List</h4>
+      <a href="#" routerLink="/slide-show/" class="btn btn-success">New</a>
+      <div class="search-container" style="display: flex">
+        <form [formGroup]="form" (ngSubmit)="search()">
+          <input type="text" placeholder="Search.." formControlName="searchQuery">
+          <button type="submit">Go</button>
+        </form><a href="/banner"><button>Clear</button></a>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="container-fluid2" style="border: 1px solid black">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Active</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th width="250px">Action</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let banner of banners">
+        <td>{{ banner.id }}</td>
+        <td>{{ banner.name }}</td>
+        <td>{{ banner.active }}</td>
+        <td>{{ banner.startDate }}</td>
+        <td>{{ banner.endDate }}</td>
+        <td>
+          <a href="#" [routerLink]="['/edit-banner/', banner.id, 'edit']" class="btn btn-primary">Edit</a>
+          <button type="button" (click)="deleteBanner(banner.id)" class="btn btn-danger">Delete</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+
+  </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>
