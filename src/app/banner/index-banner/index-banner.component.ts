@@ -43,9 +43,11 @@ export class IndexBannerComponent implements OnInit {
    * @return response()
    */
   deleteBanner(id:number){
+    if(confirm('Are you sure you want to delete this banner rotator?'))
     this.bannerService.deleteBanner(id).subscribe(res => {
       this.banners = this.banners.filter(item => item.id !== id);
       console.log('Tblslideshow deleted successfully!');
+      alert('Deleted sucessfully !!!')
     })
   }
 

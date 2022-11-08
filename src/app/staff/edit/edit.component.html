@@ -5,24 +5,16 @@
   <fieldset style="width:800px;" >
 
                     <legend>Menu</legend>
-                    <div class="d0">
-                      <div class="d2">
-                    <select id="categories" name="users" onchange="showUser(this.value)">
-                      <option value="">Suppliers</option>
-                      <option value="movie">Movie</option>
-                      <option value="musik">Musik</option>
-                      <option value="books">Books</option>
-                      <option value="images">Images</option>
-                      </select>
-              <select style="width:180px;" id="categories" name="users" onchange="showUser(this.value) ">
-                <option value="">Company Staff Account</option>
-                <option value="movie">Tblslideshow Rotator Module</option>
-                </select>
-              </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <div class="d1"></div>
-                <output>Current User: Tabish Sarfraz | </output> <a href="url">Main Menu</a>
-
-              </div>
+                    <div style="display: flex; justify-content:space-between">
+                      <div><select name="forma" style="width:190px; height: auto;" onchange="location = this.value;"> 
+                        <option value="">Suppliers</option>
+                        </select> 
+                        <select name="forma" style="width:190px; height: auto;" onchange="location = this.value;"> 
+                        <option value="/">Company Staff Module</option> 
+                        <option value="/banner">Banner Rotator Module</option> 
+                       </select></div>
+                        <div><output>Current User: Tabish Sarfraz | </output> <a href="url">Main Menu</a></div>
+                    </div>
 
 </fieldset>
 
@@ -59,10 +51,10 @@
                                     <fieldset style="width:780px;">
                                         <legend>Company Details</legend>
                                         <div class="form-group">
-                                        <label for="suppliers">Assigned To Supplier:</label><input formControlName="suppliers"
-                                        id="suppliers"
+                                        <label for="supplier">Assigned To Supplier:</label><input formControlName="supplier"
+                                        id="supplier"
                                         type="text"
-                                        [(ngModel)]="staff.suppliers"
+                                        [(ngModel)]="staff.supplier"
                                         class="form-control" required>
 
                                           </div>
@@ -82,11 +74,10 @@
 
                                     <div class="f3">
                                       <div class="form-group">
-                                        <label for="title">Title:                   </label><input formControlName="title"
-                                        id="title"
-                                        type="text"
-                                        [(ngModel)]="staff.title"
-                                        class="form-control" required>
+                                        <label for="title">Title:                   </label><select  [(ngModel)]="staff.title" formControlName="title" id="title" >
+                                          <option value="">---Please Select---</option>
+                                          <option [value]=a.title *ngFor="let a of title">{{a.title}}</option>
+                                          </select><br>
                                           </div>
                                           <div class="form-group">
                                         <label for="firstName">First Name:         </label><input formControlName="firstName"
@@ -103,18 +94,16 @@
                                         class="form-control" required><br>
                                         </div>
                                         <div class="form-group">
-                                        <label for="age">Age:                       </label><input formControlName="age"
-                                        id="age"
-                                        type="number"
-                                        [(ngModel)]="staff.age"
-                                        class="form-control" required>
-
+                                        <label for="age">Age:                       </label><select [(ngModel)]="staff.age" formControlName="age" id="age" >
+                                          <option value="">---Please Select---</option>
+                                          <option [value]=a.age_range *ngFor="let a of age">{{a.age_range}}</option>
+                                          </select>
                                           </div>
                                           <div class="form-group">
-                                        <label for="position">Position:             </label><input formControlName="position"
-                                        id="position"
+                                        <label for="position">Position:             </label><input formControlName="accountType"
+                                        id="accountType"
                                         type="text"
-                                        [(ngModel)]="staff.position"
+                                        [(ngModel)]="staff.accountType"
                                         class="form-control" required><br>
                                         </div>
                                         <div class="form-group">
@@ -137,15 +126,14 @@
                               <fieldset style="width:780px;">
                                 <legend>Admin Access</legend>
                                 <div class="form-group">
-                                <label for="acl">Access Level:</label><input formControlName="acl"
-                                id="acl"
-                                type="number"
-                                [(ngModel)]="staff.acl"
-                                class="form-control" required><br>
+                                <label for="acl">Access Level:</label><select [(ngModel)]="staff.acl" formControlName="acl" id="acl" >
+                                  <option value="">---Please Select---</option>
+                                  <option [value]=a.a_levels *ngFor="let a of access">{{a.a_levels}}</option>
+                                  </select><br>
                                   </div>
                               </fieldset>
                             <div class="x">
-                              <br><button class="btn btn-primary" type="submit"  >Update</button><a href="#" routerLink="/" class="btn btn-primary">Cancel</a></div>
+                              <br><button class="x" type="submit" onClick="return empty()"  >Update</button><button href="#" routerLink="/" class="x">Cancel</button></div>
 
                             </form>
   </fieldset>

@@ -107,7 +107,32 @@ export class StaffService {
         catchError(this.errorHandler)
       )
   }
+  getAllAge(): Observable<any> {
 
+    return this.httpClient.get(this.apiURL + '/all-age')
+
+    .pipe(
+      catchError(this.errorHandler)
+    )
+  }
+
+  getAllAccess(): Observable<any> {
+
+    return this.httpClient.get(this.apiURL + '/all-access')
+
+    .pipe(
+      catchError(this.errorHandler)
+    )
+  }
+
+  getAllTitle(): Observable<any> {
+
+    return this.httpClient.get(this.apiURL + '/all-title')
+
+    .pipe(
+      catchError(this.errorHandler)
+    )
+  }
   /**
    * Write code on Method
    *

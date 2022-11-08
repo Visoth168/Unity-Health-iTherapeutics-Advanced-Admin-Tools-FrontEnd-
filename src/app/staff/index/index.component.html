@@ -45,37 +45,21 @@
    </head>
    <body>
 <div class="container-fluid"style="border: 1px solid black" >
-      <div class="container-fluid1"style="border: 1px solid black" >
-			 Menu
-			<p class="text-left">
+  <fieldset>
+    
+    <legend>Menu</legend>
+    <div style="display: flex; justify-content:space-between">
+      <div><select name="forma" style="width:190px; height: auto;" onchange="location = this.value;"> 
+        <option value="">Suppliers</option>
+        </select> 
+        <select name="forma" style="width:190px; height: auto;" onchange="location = this.value;"> 
+        <option value="/">Company Staff Module</option> 
+        <option value="/banner">Banner Rotator Module</option> 
+       </select></div>
+      <div><output>Current User: Tabish Sarfraz | </output> <a href="url">Main Menu</a></div>
+   </div>
 
-			<div class="btn-group shadow-0">
-  <button type="button" class="btn btn-light dropdown-toggle" data-mdb-toggle="dropdown" aria-expanded="true" disabled>
-    Suppliers
-  </button>
-  <ul class="dropdown-menu">
-    <li><a class="dropdown-item" href="#">Action</a></li>
-    <li><a class="dropdown-item" href="#">Another action</a></li>
-    <li><a class="dropdown-item" href="#">Something else here</a></li>
-    <li><hr class="dropdown-divider" /></li>
-    <li><a class="dropdown-item" href="#">Separated link</a></li>
-  </ul>
-</div>
-<div class="btn-group shadow-0">
-  <button type="button" class="btn btn-light dropdown-toggle" data-mdb-toggle="dropdown" aria-expanded="false">
-    Company Staff Accounts
-  </button>
-  <ul class="dropdown-menu">
-    <li><a class="dropdown-item" href="#">Action</a></li>
-    <li><a class="dropdown-item" href="#">Another action</a></li>
-    <li><a class="dropdown-item" href="#">Something else here</a></li>
-    <li><hr class="dropdown-divider" /></li>
-    <li><a class="dropdown-item" href="#">Separated link</a></li>
-  </ul>
-</div>
-<p class="text-right">Current User : Tabish Sarfraz | <a href="#" class="link-info">Main Menu</a></p>
-
-      </div>
+</fieldset>
 
 	  <div class="container-fluid1" >
 	  <div class="topnav">

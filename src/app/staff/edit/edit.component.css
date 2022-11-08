@@ -39,4 +39,6 @@ input {
         text-align: left;
       }
   
-  
+ select{
+        width:225px;
+      } 

@@ -78,9 +78,24 @@ export class TblbannerComponent implements OnInit {
   }
 
   saveTblSlideShowChanges(){
+    var x;
+    const date=new Date();
+    const dt= new Date(this.slide.startDate);
+    const dt1= new Date(this.slide.endDate);
+    x=this.slide.name
+    if (x == "") {
+        alert("Enter a Valid Name");
+        }else if (this.slide.startDate == ""||dt < date) {
+            alert("Choose a valid starting Date");
+            
+        }else if (this.slide.endDate == ""||dt1 < dt) {
+            alert("Choose a valid ending Date");
+        }else {
     this.bannerService.saveSlideShowBanner(this.slide, this.tblSlideshowBanners).subscribe((data: TblSlideshowBanner) => {
       console.log(data)
-    });
+      this.router.navigateByUrl('/banner');
+      
+    });alert("New Banner Rotator Created Successfully!!!")}
     // this.router.navigateByUrl('/slide-show');
   }
 

@@ -1,15 +1,15 @@
 export interface CompanyStaff {
     id: number;
     company: string;
-    acl: number;
+    acl: string;
     accountType: string;
     firstName: string;
     lastName: string;
     email: string;
     title: string;
-    age: number;
+    age: string;
     position: string;
     country: string;
     state: string;
-    suppliers: string;
+    supplier: string;
 }

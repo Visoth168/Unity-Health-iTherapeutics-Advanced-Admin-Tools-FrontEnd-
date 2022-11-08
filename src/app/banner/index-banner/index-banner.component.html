@@ -45,26 +45,29 @@
 </head>
 <body>
 <div class="container-fluid"style="border: 1px solid black" >
-  <div class="container-fluid1"style="border: 1px solid black" >
-    Menu
-    <p class="text-left">
+  <fieldset>
+    
+    <legend>Menu</legend>
 
-    <div class="btn-group shadow-0">
-      <button type="button" class="btn btn-light " data-mdb-toggle="dropdown" aria-expanded="true" disabled>
-        Site
-      </button>
-    </div>
-    <div class="btn-group shadow-0">
-      <button type="button" class="btn btn-light" data-mdb-toggle="dropdown" aria-expanded="false">
-        Tblslideshow Rotator Module
-      </button>
+    
+    <div style="display: flex; justify-content:space-between">
+      <div><select name="forma" style="width:190px; height: auto;" onchange="location = this.value;"> 
+        <option value="">Site</option>
+        
+        </select> 
+        <select name="forma" style="width:190px; height: auto;" onchange="location = this.value;"> 
+        <option value="/banner">Banner Rotator Module</option> 
+        <option value="/">Company Staff Module</option> 
+        
+       </select></div>
+        <div><output>Current User: Tabish Sarfraz | </output> <a href="url">Main Menu</a></div>
     </div>
 
-  </div>
+</fieldset>
 
   <div class="container-fluid1" >
     <div class="topnav">
-      <br><hr><h4>Tblslideshow Rotator Maintenance List</h4>
+      <br><hr><h4>Banner Rotator Maintenance List</h4>
       <a href="#" routerLink="/slide-show/" class="btn btn-success">New</a>
       <div class="search-container" style="display: flex">
         <form [formGroup]="form" (ngSubmit)="search()">

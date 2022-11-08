@@ -1,32 +1,35 @@
 import { Component, OnInit } from '@angular/core';
+import {Tblslideshow} from "../../banner/tblslideshow";
+import {BannerService} from "../../banner/banner.service";
+import { TblBanner } from 'src/app/tbl-banner/tblbanner';
+import { TblSlideshowBanner } from 'src/app/tbl-banner/tblslideshowbanner';
+import {ActivatedRoute, Router} from "@angular/router";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {Router} from "@angular/router";
-import {BannerService} from "../banner.service";
 
 @Component({
-  selector: 'app-create-banner',
+  selector: 'app-tblbanner',
   templateUrl: './create-banner.component.html',
   styleUrls: ['./create-banner.component.css']
 })
 export class CreateBannerComponent implements OnInit {
+
+  slide: Tblslideshow= new Tblslideshow(0,"","","","")
+  banners: TblBanner[] = [];
+  tblSlideshowBanners: TblBanner[] = [];
   form!: FormGroup;
 
-  /*------------------------------------------
-  --------------------------------------------
-  Created constructor
-  --------------------------------------------
-  --------------------------------------------*/
-  constructor(
-    public bannerService: BannerService,
-    private router: Router
-  ) { }
 
-  /**
-   * Write code on Method
-   *
-   * @return response()
-   */
+
+  constructor(public bannerService: BannerService, private route: ActivatedRoute, private router: Router) {}
+
   ngOnInit(): void {
+    this.bannerService.getAllBanners().subscribe((tblBanners: TblBanner[]) => {
+      this.banners = tblBanners;
+    });
+    // this.bannerService.getAllSlideShowBanners().subscribe((tblSlideShowBanners: TblSlideshowBanner[]) => {
+    //   this.tblSlideshowBanners = tblSlideShowBanners;
+    // });
+
     this.form = new FormGroup({
       name: new FormControl('', [Validators.required]),
       active: new FormControl('', Validators.required),
@@ -35,25 +38,69 @@ export class CreateBannerComponent implements OnInit {
     });
   }
 
-  /**
-   * Write code on Method
-   *
-   * @return response()
-   */
-  get f(){
-    return this.form.controls;
+  addToTblSlideShowBanner(){
+    console.log(this.banners);
+    if(this.banners.length>0){
+      var selectedBanners: TblBanner[] = this.banners.filter(b=>b.isSelected);
+      for (const banner of selectedBanners) {
+          if(!banner.isSelected) return;
+          console.log("selected", banner.id)
+          var slideShowBanner = new TblBanner(banner.id,banner.name,banner.startDate,banner.endDate,false);
+          this.tblSlideshowBanners.push(slideShowBanner);
+          this.deleteFromTblSlideShow(banner);
+      }
+
+    }
   }
 
-  /**
-   * Write code on Method
-   *
-   * @return response()
-   */
-  submit(){
+  removeFromTblSlideShowBanner(){
+    if(this.tblSlideshowBanners.length>0){
+      let selectedIndexTblSlideShowBanner = this.tblSlideshowBanners.length-1;
+      let tblSlideShowBanner = this.tblSlideshowBanners[selectedIndexTblSlideShowBanner];
+      var slideShow = new TblBanner(tblSlideShowBanner.id,tblSlideShowBanner.name,tblSlideShowBanner.startDate,tblSlideShowBanner.endDate);
+      this.banners.push(slideShow);
+      this.deleteFromTblSlideShowBanner(tblSlideShowBanner);
+    }
+  }
+
+  deleteFromTblSlideShow(slideShow:TblBanner) {
+    const index: number = this.banners.indexOf(slideShow);
+    if (index !== -1) {
+      this.banners.splice(index, 1);
+    }
+  }
+
+  deleteFromTblSlideShowBanner(tbSlideShowBannr:TblBanner) {
+    const index: number = this.tblSlideshowBanners.indexOf(tbSlideShowBannr);
+    if (index !== -1) {
+      this.tblSlideshowBanners.splice(index, 1);
+    }
+  }
+
+  saveTblSlideShowChanges(){
+    this.bannerService.saveSlideShowBanner(this.slide, this.tblSlideshowBanners).subscribe((data: TblSlideshowBanner) => {
+      console.log(data)
+      this.router.navigateByUrl('/banner');
+    });
+    // this.router.navigateByUrl('/slide-show');
+  }
+
+  bannerselection(banner: TblBanner){
+    banner.isSelected=!banner.isSelected;
+    var n = this.slide
+     console.log("SELLLEEECCCTEEED ^^",{n})
+  }
+
+  addNewBanner(){
+    if (this.form.value.active==true){
+      this.form.value.active="Yes";
+    }else {this.form.value.active="No"}
     console.log(this.form.value);
     this.bannerService.createBanner(this.form.value).subscribe((res:any) => {
-      console.log('Tblslideshow created successfully!');
-      this.router.navigateByUrl('/banner');
+      console.log('Data submitted successfully!');
+      // this.router.navigateByUrl('/slide-show');
+      window.location.href = "/slide-show";
+
     })
   }
 

@@ -54,6 +54,16 @@ export class BannerService {
       )
   }
 
+    getAllBannersBySlide(id:number): Observable<any> {
+
+    return this.httpClient.get(this.apiURL + '/all-slideshow-banners/'+id)
+
+      .pipe(
+        catchError(this.errorHandler)
+      )
+  }
+
+
   getAllSlideShowBanners(): Observable<any> {
 
     return this.httpClient.get(this.apiURL + '/all-slideshow-banners')
@@ -109,9 +119,9 @@ export class BannerService {
    *
    * @return response()
    */
-  updateBanner(id:number, banner:Tblslideshow): Observable<any> {
+  updateBanner(id:number, banner:any): Observable<any> {
 
-    return this.httpClient.put(this.apiURL + '/edit-banner/' + id, JSON.stringify(banner), this.httpOptions)
+    return this.httpClient.put(this.apiURL + '/edit-slide/' + id, JSON.stringify(banner), this.httpOptions)
 
       .pipe(
         catchError(this.errorHandler)

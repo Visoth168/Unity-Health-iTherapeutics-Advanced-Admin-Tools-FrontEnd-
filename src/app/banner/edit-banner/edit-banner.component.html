@@ -1,52 +1,176 @@
-<style> img { max-width: 100%; } </style>
-<div class="container">
+<!-- <!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>TBL Tblslideshow</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrap.com/bootstrap/4.1.1/css/bootstrap.min.css">
+  <style>
+    .container-fluid {
+      padding-top: 10px;
+      padding-right: 10px;
+      padding-left: 10px;
+      padding-bottom: 10px;
+      background: #bfbfbf;
+    }
+    .container-fluid1{
+      padding-top: 4px;
+      padding-right: 4px;
+      padding-left: 4px;
+      padding-bottom: 4px;
+      background: #bfbfbf;
+    }
+    .container-fluid2{
+      padding-top: 4px;
+      padding-right: 4px;
+      padding-left: 4px;
+      padding-bottom: 4px;
+      background: #eee;
+    }
+    .topnav .search-container {
+      float: right;}
 
+    .btn {
+      border: 2px solid black;
+      background-color: white;
+      color: black;
+    }
+    .btn2 {
+      border: 0px solid black;
+      padding: 1x 1px;
+      color: white;
+      background:blue;
+      border-radius: 50%;
+    }
+  </style>
+</head>
+<body>
+<div class="container-fluid"style="border: 1px solid black" >
+  <div class="container-fluid1" >
+    <p>Menu</p>
+    <form [formGroup]="form" (ngSubmit)="addNewBanner()">
+    <p class="text-left">
+      Tblslideshow Rotator Module Maintenance <span style="float: right">Members: 0</span><br><hr><p>Slide Show Name</p>
+    <input formControlName="name" [(ngModel)]="slide.name" type="text" class="form-control" required style="width: 50%">
+    <h5 style="background-color: #4d4d4d; padding: 3px; color: white">Dates</h5>
+    <h6>Start: <input [(ngModel)]="slide.startDate" formControlName="startDate" type="date" required></h6>
+    <h6>End: <input [(ngModel)]="slide.endDate" type="date" formControlName="endDate" required></h6>
 
-  <fieldset style="width:800px;">
-    <form [formGroup]="form" (ngSubmit)="submit()"><br>
-      <h4>Edit Tblslideshow Rotator</h4>
+    <h5 style="background-color: #4d4d4d; padding: 3px; color: white">Tblslideshow Rotator Details</h5>
+    <h6>Active: <input [(ngModel)]="slide.active" type="checkbox" formControlName="active"></h6>
 
-      <div class="x"><a href="#" routerLink="/banner" class="btn btn-primary">Back</a></div><br>
-      <div class="p2">
+    <h5 style="background-color: #4d4d4d; padding: 3px; color: white">Display Random Order</h5>
+    <h6>Display Random: <input type="checkbox"></h6><br>
+     <input class="btn btn-light" type="submit" value="Save New Banner"/><hr> -->
+    <!-- </form> -->
+
+    <!-- <h5 style="background-color: #4d4d4d; padding: 3px; color: white">Tblslideshow List</h5>
+
+    <div class="row" style="width: 80%; margin: auto">
+      <div class="column">
+        <p *ngFor="let tblSlideshowBanner of tblSlideshowBanners"><span>{{ tblSlideshowBanner.name+' ['+tblSlideshowBanner.startDate+'-'+tblSlideshowBanner.endDate+']'}}</span></p>
       </div>
-      <fieldset style="width:780px;">
-        <div class="p3">
+      <div class="column" style="background-color: inherit; width: 10%; text-align: center"><br><br><br><br>
+        <p><button type="button" class="btn btn-light" style="width: 86%" (click)="addToTblSlideShowBanner()">Add</button></p>
+        <p><button type="button" class="btn btn-light"  style="width: 86%" (click)="removeFromTblSlideShowBanner()">Remove</button></p>
+      </div>
+      <div class="column">
+        <p (click)="bannerselection(banner)" [ngClass]="{'selectedbanner': banner.isSelected}" *ngFor="let banner of banners"><span>{{ banner.id + ' : ' + banner.name+' ['+banner.startDate+'-'+banner.endDate+']'}}</span></p>
+      </div>
+    </div>
+  </div><br>
+  <p><button type="button" class="btn btn-light" (click)="updateTblSlideShowChanges()">Submit Slide Show Changes</button><a href="http://localhost:4200/banner" routerLink="/banner" class="btn btn-primary">Back</a></p>
+  <hr>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 
-          <div class="f3">
-            <div class="form-group">
-              <label for="name">Name:                   </label><input formControlName="name"
-                                                                         id="name"
-                                                                         type="text"
-                                                                         [(ngModel)]="banner.name"
-                                                                         class="form-control" required>
-            </div>
-            <div class="form-group">
-              <label for="active">Active:         </label><input formControlName="active"
-                                                                        id="active"
-                                                                        type="text"
-                                                                        [(ngModel)]="banner.active"
-                                                                        class="form-control" required><Br>
-            </div>
-            <div class="form-group">
-              <label for="startDate">Start Date:           </label><input formControlName="startDate"
-                                                                        id="startDate"
-                                                                        type="date"
-                                                                        [(ngModel)]="banner.startDate"
-                                                                        class="form-control" required><br>
-            </div>
-            <div class="form-group">
-              <label for="endDate">End Date:                       </label><input formControlName="endDate"
-                                                                         id="endDate"
-                                                                         type="date"
-                                                                         [(ngModel)]="banner.endDate"
-                                                                         class="form-control" required>
-            </div>
-          </div>
-        </div>
-      </fieldset>
-      <div class="x"><br><button class="btn btn-primary" type="submit"  >Update</button></div>
-
-    </form>
+</body>
+</html> --> 
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>TBL Tblslideshow</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrap.com/bootstrap/4.1.1/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container-fluid"style="border: 1px solid black" >
+    
+    <fieldset>
+    
+      <legend><h5>Menu</h5></legend>
+  
+      
+      <div style="display: flex; justify-content:space-between">
+        <div><select name="forma" style="width:190px; height: auto;" onchange="location = this.value;"> 
+          <option value="">Site</option>
+          </select> 
+          <select name="forma" style="width:190px; height: auto;" onchange="location = this.value;"> 
+          <option value="/banner">Banner Rotator Module</option> 
+          <option value="/">Company Staff Module</option> 
+         
+         </select></div>
+          <div><output>Current User: Tabish Sarfraz | </output> <a href="url">Main Menu</a></div>
+      </div>
+  
   </fieldset>
 
+ <fieldset>
+  <div class="container-fluid1" >
+    <fieldset style="width: 1500px">
+    <form [formGroup]="form" (ngSubmit)="addNewBanner()">
+    <p class="text-left">
+       <span style="float: right">Members: 0</span><br><hr>
+    <legend><h5>Banner Rotator Name</h5></legend>
+    <fieldset style="width: 1000px">
+    <input formControlName="name" [(ngModel)]="slide.name" type="text" id= "vName" class="form-control" required >
+  </fieldset>
+    <legend><h5>Dates</h5></legend>
+    <fieldset style="width: 1000px">
+    
+    <h6>Start-Date: <input [(ngModel)]="slide.startDate" id="dtDateStart" formControlName="startDate" type="date" required></h6>
+    <h6>End-Date: <input [(ngModel)]="slide.endDate" id="dtDateEnd" type="date" formControlName="endDate" required></h6>
+  </fieldset>
+  <legend><h5>Banner Rotator Details</h5></legend>
+  <fieldset style="width: 1000px">
+   
+    <h6>Active: <input [(ngModel)]="slide.active" type="checkbox" style="height: 15px; width: 35px" formControlName="active"></h6>
+  </fieldset>
+  <legend><h5> Random Order</h5></legend>
+  <fieldset style="width: 1000px">
+    
+    <h6>Display Random: <input type="checkbox" style="height: 15px; width: 35px"></h6><br>
+      <!-- <input class="btn btn-light" type="submit" value="Save New Banner"/><hr>  -->
+    </fieldset>
+    </form>
+  </fieldset>
+    <legend><h5>Banner List</h5></legend>
+<fieldset style="width: 1500px">
+    <div class="row" style="width: 100%; margin: auto">
+      <div class="column">
+        <p *ngFor="let tblSlideshowBanner of tblSlideshowBanners"><span>{{ tblSlideshowBanner.name+' ['+tblSlideshowBanner.startDate+'-'+tblSlideshowBanner.endDate+']'}}</span></p>
+      </div>
+      <div class="column" style="background-color: inherit; width: 10%; text-align: center"><br><br><br><br>
+        <p><button type="button" class="btn btn-light" style="width: 86%" (click)="addToTblSlideShowBanner()">Add</button></p>
+        <p><button type="button" class="btn btn-light"  style="width: 86%" (click)="removeFromTblSlideShowBanner()">Remove</button></p>
+      </div>
+      <div class="column">
+        <p (click)="bannerselection(banner)" [ngClass]="{'selectedbanner': banner.isSelected}" *ngFor="let banner of banners"><span>{{ banner.id + ' : ' + banner.name+' ['+banner.startDate+'-'+banner.endDate+']'}}</span></p>
+      </div>
+    </div>
+  </fieldset>
+  </div><br>
+  <p><button type="button" class="btn btn-light"  (click)="updateTblSlideShowChanges()">Update Banner Rotator</button><a href="http://localhost:4200/banner" routerLink="/banner" class="btn btn-primary">Back</a></p> 
+  
+</fieldset>
+  <hr>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

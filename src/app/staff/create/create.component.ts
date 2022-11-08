@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { StaffService } from '../staff.service';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators} from '@angular/forms';
+import { age } from '../age';
+import { access } from '../access';
+import { title } from '../title';
 
 @Component({
   selector: 'app-create',
@@ -9,7 +12,9 @@ import { FormGroup, FormControl, Validators} from '@angular/forms';
   styleUrls: ['./create.component.css']
 })
 export class CreateComponent implements OnInit {
-
+  age: age[] = [];
+  access: access[] = [];
+  title: title[]=[];
   form!: FormGroup;
 
   /*------------------------------------------
@@ -27,7 +32,21 @@ export class CreateComponent implements OnInit {
    *
    * @return response()
    */
-  ngOnInit(): void {
+  ngOnInit(): void {this.staffService.getAllAge().subscribe((data: age[])=>{
+    this.age = data;
+    console.log(this.age);
+  })
+  this.staffService.getAllTitle().subscribe((data: title[])=>{
+    this.title = data;
+    console.log(this.title);
+  })
+  this.staffService.getAllAccess().subscribe((data: access[])=>{
+    this.access = data;
+    console.log(this.access);
+  })
+  this.form = new FormGroup({
+    searchQuery: new FormControl('', [Validators.required])
+  });
     this.form = new FormGroup({
       company: new FormControl('', [Validators.required]),
       acl: new FormControl('', Validators.required),
@@ -40,7 +59,7 @@ export class CreateComponent implements OnInit {
       position: new FormControl('', [Validators.required]),
      country: new FormControl('', Validators.required),
       state: new FormControl('', [Validators.required]),
-      suppliers: new FormControl('', Validators.required)
+      supplier: new FormControl('', Validators.required)
     });
   }
 
@@ -63,6 +82,7 @@ export class CreateComponent implements OnInit {
     this.staffService.create(this.form.value).subscribe((res:any) => {
          console.log('CompanyStaff created successfully!');
          this.router.navigateByUrl('/');
+         alert('New User Created sucessfully!!!')
     })
   }
 

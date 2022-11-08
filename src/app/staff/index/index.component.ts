@@ -43,9 +43,11 @@ export class IndexComponent implements OnInit {
    * @return response()
    */
   deletePost(id:number){
+    if(confirm('Are you sure you want to delete this user?'))
     this.staffService.delete(id).subscribe(res => {
          this.staffs = this.staffs.filter(item => item.id !== id);
          console.log('CompanyStaff deleted successfully!');
+         alert('Deleted sucessfully !!!')
     })
   }
 
